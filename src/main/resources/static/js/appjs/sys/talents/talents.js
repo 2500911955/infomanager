@@ -47,7 +47,7 @@ function load() {
 									title : '姓名'
 								},
 								{
-									field : 'punit',
+									field : 'uid',
 									title : '单位'
 								},
 								{
@@ -59,25 +59,27 @@ function load() {
 									title : '任职资格'
 								},
 								{
-									field : 'pidcode',
+									field : 'pidentity',
 									title : '身份'
-								},
+								}/*,
 								{
 									title : '操作',
 									field : 'pid',
 									align : 'center',
 									formatter : function(value, row, index) {
-										var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
-												/*+ row.pid*/
+										var e = '<a class="btn btn-primary btn-sm '
+												+ s_edit_h
+												+ '" href="#" mce_href="#" title="编辑" onclick="edit(\''
+												 + row.pid 
 												+ '\')"><i class="fa fa-edit"></i></a> ';
-										var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
+										var d = '<a class="btn btn-warning btn-sm '
+												+ s_remove_h
+												+ '" href="#" title="删除"  mce_href="#" onclick="remove(\''
 												+ row.pid
 												+ '\')"><i class="fa fa-remove"></i></a> ';
 										return e + d;
-									}
-								} ],
-					data : [{pid : '1',pname:'张三',punit : '青平川采油厂',pplace:'湖南衡阳',pqualification:'工程师',pidcode:'干部'}]
-					
+									} 
+								}*/ ]
 					});
 }
 function reLoad() {
@@ -91,12 +93,13 @@ function add() {
 		maxmin : true,
 		shadeClose : true, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
-		content : prefix + '/add' ,// iframe的url
-		end: function () {
-            location.reload();
-        }
+		content : prefix + '/add',// iframe的url
+		end : function() {
+			location.reload();
+		}
 	});
 }
+
 function remove(id) {
 	layer.confirm('确定要删除选中的记录？', {
 		btn : [ '确定', '取消' ]
@@ -118,6 +121,7 @@ function remove(id) {
 		});
 	})
 }
+
 function edit(id) {
 	layer.open({
 		type : 2,
@@ -125,11 +129,11 @@ function edit(id) {
 		maxmin : true,
 		shadeClose : true, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
-		content : prefix + '/edit'/* + id*/ // iframe的url
+		content : prefix + '/edit'/* + id */// iframe的url
 	});
 }
+
 function batchRemove() {
-	
 	var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
 	if (rows.length == 0) {
 		layer.msg("请选择要删除的数据");
@@ -158,5 +162,6 @@ function batchRemove() {
 				}
 			}
 		});
-	}, function() {});
+	}, function() {
+	});
 }
