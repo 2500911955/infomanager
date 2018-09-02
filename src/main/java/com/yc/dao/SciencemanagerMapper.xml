@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.SciencemanagerMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.po.Sciencemanager" >
+    <id column="smid" property="smid" jdbcType="INTEGER" />
+    <result column="said" property="said" jdbcType="INTEGER" />
+    <result column="smname" property="smname" jdbcType="VARCHAR" />
+    <result column="smunit" property="smunit" jdbcType="VARCHAR" />
+    <result column="smbegin_date" property="smbeginDate" jdbcType="DATE" />
+    <result column="smfinish_date" property="smfinishDate" jdbcType="DATE" />
+    <result column="smfristprincipal" property="smfristprincipal" jdbcType="VARCHAR" />
+    <result column="smsecondprincipal" property="smsecondprincipal" jdbcType="VARCHAR" />
+    <result column="sminvest" property="sminvest" jdbcType="VARCHAR" />
+    <result column="smpaycase" property="smpaycase" jdbcType="VARCHAR" />
+    <result column="smaccessory" property="smaccessory" jdbcType="VARCHAR" />
+    <result column="smstate" property="smstate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    smid, said, smname, smunit, smbegin_date, smfinish_date, smfristprincipal, smsecondprincipal, 
+    sminvest, smpaycase, smaccessory, smstate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sciencemanager
+    where smid = #{smid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sciencemanager
+    where smid = #{smid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.po.Sciencemanager" >
+    insert into sciencemanager (smid, said, smname, 
+      smunit, smbegin_date, smfinish_date, 
+      smfristprincipal, smsecondprincipal, sminvest, 
+      smpaycase, smaccessory, smstate
+      )
+    values (#{smid,jdbcType=INTEGER}, #{said,jdbcType=INTEGER}, #{smname,jdbcType=VARCHAR}, 
+      #{smunit,jdbcType=VARCHAR}, #{smbeginDate,jdbcType=DATE}, #{smfinishDate,jdbcType=DATE}, 
+      #{smfristprincipal,jdbcType=VARCHAR}, #{smsecondprincipal,jdbcType=VARCHAR}, #{sminvest,jdbcType=VARCHAR}, 
+      #{smpaycase,jdbcType=VARCHAR}, #{smaccessory,jdbcType=VARCHAR}, #{smstate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.po.Sciencemanager" >
+    insert into sciencemanager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="smid != null" >
+        smid,
+      </if>
+      <if test="said != null" >
+        said,
+      </if>
+      <if test="smname != null" >
+        smname,
+      </if>
+      <if test="smunit != null" >
+        smunit,
+      </if>
+      <if test="smbeginDate != null" >
+        smbegin_date,
+      </if>
+      <if test="smfinishDate != null" >
+        smfinish_date,
+      </if>
+      <if test="smfristprincipal != null" >
+        smfristprincipal,
+      </if>
+      <if test="smsecondprincipal != null" >
+        smsecondprincipal,
+      </if>
+      <if test="sminvest != null" >
+        sminvest,
+      </if>
+      <if test="smpaycase != null" >
+        smpaycase,
+      </if>
+      <if test="smaccessory != null" >
+        smaccessory,
+      </if>
+      <if test="smstate != null" >
+        smstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="smid != null" >
+        #{smid,jdbcType=INTEGER},
+      </if>
+      <if test="said != null" >
+        #{said,jdbcType=INTEGER},
+      </if>
+      <if test="smname != null" >
+        #{smname,jdbcType=VARCHAR},
+      </if>
+      <if test="smunit != null" >
+        #{smunit,jdbcType=VARCHAR},
+      </if>
+      <if test="smbeginDate != null" >
+        #{smbeginDate,jdbcType=DATE},
+      </if>
+      <if test="smfinishDate != null" >
+        #{smfinishDate,jdbcType=DATE},
+      </if>
+      <if test="smfristprincipal != null" >
+        #{smfristprincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="smsecondprincipal != null" >
+        #{smsecondprincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="sminvest != null" >
+        #{sminvest,jdbcType=VARCHAR},
+      </if>
+      <if test="smpaycase != null" >
+        #{smpaycase,jdbcType=VARCHAR},
+      </if>
+      <if test="smaccessory != null" >
+        #{smaccessory,jdbcType=VARCHAR},
+      </if>
+      <if test="smstate != null" >
+        #{smstate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.po.Sciencemanager" >
+    update sciencemanager
+    <set >
+      <if test="said != null" >
+        said = #{said,jdbcType=INTEGER},
+      </if>
+      <if test="smname != null" >
+        smname = #{smname,jdbcType=VARCHAR},
+      </if>
+      <if test="smunit != null" >
+        smunit = #{smunit,jdbcType=VARCHAR},
+      </if>
+      <if test="smbeginDate != null" >
+        smbegin_date = #{smbeginDate,jdbcType=DATE},
+      </if>
+      <if test="smfinishDate != null" >
+        smfinish_date = #{smfinishDate,jdbcType=DATE},
+      </if>
+      <if test="smfristprincipal != null" >
+        smfristprincipal = #{smfristprincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="smsecondprincipal != null" >
+        smsecondprincipal = #{smsecondprincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="sminvest != null" >
+        sminvest = #{sminvest,jdbcType=VARCHAR},
+      </if>
+      <if test="smpaycase != null" >
+        smpaycase = #{smpaycase,jdbcType=VARCHAR},
+      </if>
+      <if test="smaccessory != null" >
+        smaccessory = #{smaccessory,jdbcType=VARCHAR},
+      </if>
+      <if test="smstate != null" >
+        smstate = #{smstate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where smid = #{smid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.po.Sciencemanager" >
+    update sciencemanager
+    set said = #{said,jdbcType=INTEGER},
+      smname = #{smname,jdbcType=VARCHAR},
+      smunit = #{smunit,jdbcType=VARCHAR},
+      smbegin_date = #{smbeginDate,jdbcType=DATE},
+      smfinish_date = #{smfinishDate,jdbcType=DATE},
+      smfristprincipal = #{smfristprincipal,jdbcType=VARCHAR},
+      smsecondprincipal = #{smsecondprincipal,jdbcType=VARCHAR},
+      sminvest = #{sminvest,jdbcType=VARCHAR},
+      smpaycase = #{smpaycase,jdbcType=VARCHAR},
+      smaccessory = #{smaccessory,jdbcType=VARCHAR},
+      smstate = #{smstate,jdbcType=VARCHAR}
+    where smid = #{smid,jdbcType=INTEGER}
+  </update>
+</mapper>

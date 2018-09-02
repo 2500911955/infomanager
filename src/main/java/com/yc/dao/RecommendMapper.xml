@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.RecommendMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.po.Recommend" >
+    <id column="rid" property="rid" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="rdate" property="rdate" jdbcType="DATE" />
+    <result column="rlevel" property="rlevel" jdbcType="VARCHAR" />
+    <result column="rname" property="rname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rid, pid, rdate, rlevel, rname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from recommend
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from recommend
+    where rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.po.Recommend" >
+    insert into recommend (rid, pid, rdate, 
+      rlevel, rname)
+    values (#{rid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{rdate,jdbcType=DATE}, 
+      #{rlevel,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.po.Recommend" >
+    insert into recommend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="rdate != null" >
+        rdate,
+      </if>
+      <if test="rlevel != null" >
+        rlevel,
+      </if>
+      <if test="rname != null" >
+        rname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="rdate != null" >
+        #{rdate,jdbcType=DATE},
+      </if>
+      <if test="rlevel != null" >
+        #{rlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="rname != null" >
+        #{rname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.po.Recommend" >
+    update recommend
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="rdate != null" >
+        rdate = #{rdate,jdbcType=DATE},
+      </if>
+      <if test="rlevel != null" >
+        rlevel = #{rlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="rname != null" >
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.po.Recommend" >
+    update recommend
+    set pid = #{pid,jdbcType=INTEGER},
+      rdate = #{rdate,jdbcType=DATE},
+      rlevel = #{rlevel,jdbcType=VARCHAR},
+      rname = #{rname,jdbcType=VARCHAR}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+</mapper>

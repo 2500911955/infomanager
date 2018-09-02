@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.LeavemessageMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.po.Leavemessage" >
+    <id column="lid" property="lid" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="lmessage" property="lmessage" jdbcType="VARCHAR" />
+    <result column="lreply" property="lreply" jdbcType="VARCHAR" />
+    <result column="lmessagedate" property="lmessagedate" jdbcType="DATE" />
+    <result column="lreplaydate" property="lreplaydate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lid, pid, lmessage, lreply, lmessagedate, lreplaydate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from leavemessage
+    where lid = #{lid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from leavemessage
+    where lid = #{lid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.po.Leavemessage" >
+    insert into leavemessage (lid, pid, lmessage, 
+      lreply, lmessagedate, lreplaydate
+      )
+    values (#{lid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{lmessage,jdbcType=VARCHAR}, 
+      #{lreply,jdbcType=VARCHAR}, #{lmessagedate,jdbcType=DATE}, #{lreplaydate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.po.Leavemessage" >
+    insert into leavemessage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lid != null" >
+        lid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="lmessage != null" >
+        lmessage,
+      </if>
+      <if test="lreply != null" >
+        lreply,
+      </if>
+      <if test="lmessagedate != null" >
+        lmessagedate,
+      </if>
+      <if test="lreplaydate != null" >
+        lreplaydate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lid != null" >
+        #{lid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="lmessage != null" >
+        #{lmessage,jdbcType=VARCHAR},
+      </if>
+      <if test="lreply != null" >
+        #{lreply,jdbcType=VARCHAR},
+      </if>
+      <if test="lmessagedate != null" >
+        #{lmessagedate,jdbcType=DATE},
+      </if>
+      <if test="lreplaydate != null" >
+        #{lreplaydate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.po.Leavemessage" >
+    update leavemessage
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="lmessage != null" >
+        lmessage = #{lmessage,jdbcType=VARCHAR},
+      </if>
+      <if test="lreply != null" >
+        lreply = #{lreply,jdbcType=VARCHAR},
+      </if>
+      <if test="lmessagedate != null" >
+        lmessagedate = #{lmessagedate,jdbcType=DATE},
+      </if>
+      <if test="lreplaydate != null" >
+        lreplaydate = #{lreplaydate,jdbcType=DATE},
+      </if>
+    </set>
+    where lid = #{lid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.po.Leavemessage" >
+    update leavemessage
+    set pid = #{pid,jdbcType=INTEGER},
+      lmessage = #{lmessage,jdbcType=VARCHAR},
+      lreply = #{lreply,jdbcType=VARCHAR},
+      lmessagedate = #{lmessagedate,jdbcType=DATE},
+      lreplaydate = #{lreplaydate,jdbcType=DATE}
+    where lid = #{lid,jdbcType=INTEGER}
+  </update>
+</mapper>

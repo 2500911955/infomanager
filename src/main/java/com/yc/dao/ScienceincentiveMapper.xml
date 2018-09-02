@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.ScienceincentiveMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.po.Scienceincentive" >
+    <id column="siid" property="siid" jdbcType="INTEGER" />
+    <result column="said" property="said" jdbcType="INTEGER" />
+    <result column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="silevel" property="silevel" jdbcType="VARCHAR" />
+    <result column="siregister" property="siregister" jdbcType="VARCHAR" />
+    <result column="sisccessory" property="sisccessory" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    siid, said, aid, silevel, siregister, sisccessory
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from scienceincentive
+    where siid = #{siid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from scienceincentive
+    where siid = #{siid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.po.Scienceincentive" >
+    insert into scienceincentive (siid, said, aid, 
+      silevel, siregister, sisccessory
+      )
+    values (#{siid,jdbcType=INTEGER}, #{said,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, 
+      #{silevel,jdbcType=VARCHAR}, #{siregister,jdbcType=VARCHAR}, #{sisccessory,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.po.Scienceincentive" >
+    insert into scienceincentive
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="siid != null" >
+        siid,
+      </if>
+      <if test="said != null" >
+        said,
+      </if>
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="silevel != null" >
+        silevel,
+      </if>
+      <if test="siregister != null" >
+        siregister,
+      </if>
+      <if test="sisccessory != null" >
+        sisccessory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="siid != null" >
+        #{siid,jdbcType=INTEGER},
+      </if>
+      <if test="said != null" >
+        #{said,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="silevel != null" >
+        #{silevel,jdbcType=VARCHAR},
+      </if>
+      <if test="siregister != null" >
+        #{siregister,jdbcType=VARCHAR},
+      </if>
+      <if test="sisccessory != null" >
+        #{sisccessory,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.po.Scienceincentive" >
+    update scienceincentive
+    <set >
+      <if test="said != null" >
+        said = #{said,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null" >
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="silevel != null" >
+        silevel = #{silevel,jdbcType=VARCHAR},
+      </if>
+      <if test="siregister != null" >
+        siregister = #{siregister,jdbcType=VARCHAR},
+      </if>
+      <if test="sisccessory != null" >
+        sisccessory = #{sisccessory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where siid = #{siid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.po.Scienceincentive" >
+    update scienceincentive
+    set said = #{said,jdbcType=INTEGER},
+      aid = #{aid,jdbcType=INTEGER},
+      silevel = #{silevel,jdbcType=VARCHAR},
+      siregister = #{siregister,jdbcType=VARCHAR},
+      sisccessory = #{sisccessory,jdbcType=VARCHAR}
+    where siid = #{siid,jdbcType=INTEGER}
+  </update>
+</mapper>

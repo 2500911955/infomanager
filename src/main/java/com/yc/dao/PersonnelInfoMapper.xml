@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.PersonnelInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.po.PersonnelInfo" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="psex" property="psex" jdbcType="VARCHAR" />
+    <result column="ppassword" property="ppassword" jdbcType="VARCHAR" />
+    <result column="pphoto" property="pphoto" jdbcType="VARCHAR" />
+    <result column="pphone" property="pphone" jdbcType="VARCHAR" />
+    <result column="pplace" property="pplace" jdbcType="VARCHAR" />
+    <result column="padress" property="padress" jdbcType="VARCHAR" />
+    <result column="pbirthday" property="pbirthday" jdbcType="DATE" />
+    <result column="pschool" property="pschool" jdbcType="VARCHAR" />
+    <result column="pculture" property="pculture" jdbcType="VARCHAR" />
+    <result column="pgraduationdate" property="pgraduationdate" jdbcType="DATE" />
+    <result column="pmajor" property="pmajor" jdbcType="VARCHAR" />
+    <result column="ppost" property="ppost" jdbcType="VARCHAR" />
+    <result column="pjoindate" property="pjoindate" jdbcType="DATE" />
+    <result column="pqualification" property="pqualification" jdbcType="VARCHAR" />
+    <result column="pqualification_date" property="pqualificationDate" jdbcType="DATE" />
+    <result column="pidentity" property="pidentity" jdbcType="VARCHAR" />
+    <result column="pidcord" property="pidcord" jdbcType="VARCHAR" />
+    <result column="pset" property="pset" jdbcType="VARCHAR" />
+    <result column="plevel" property="plevel" jdbcType="VARCHAR" />
+    <result column="premark" property="premark" jdbcType="VARCHAR" />
+    <result column="pstarts" property="pstarts" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pid, uid, pname, psex, ppassword, pphoto, pphone, pplace, padress, pbirthday, pschool, 
+    pculture, pgraduationdate, pmajor, ppost, pjoindate, pqualification, pqualification_date, 
+    pidentity, pidcord, pset, plevel, premark, pstarts
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from personnel_info
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from personnel_info
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.po.PersonnelInfo" >
+    insert into personnel_info (pid, uid, pname, 
+      psex, ppassword, pphoto, 
+      pphone, pplace, padress, 
+      pbirthday, pschool, pculture, 
+      pgraduationdate, pmajor, ppost, 
+      pjoindate, pqualification, pqualification_date, 
+      pidentity, pidcord, pset, 
+      plevel, premark, pstarts
+      )
+    values (#{pid,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{pname,jdbcType=VARCHAR}, 
+      #{psex,jdbcType=VARCHAR}, #{ppassword,jdbcType=VARCHAR}, #{pphoto,jdbcType=VARCHAR}, 
+      #{pphone,jdbcType=VARCHAR}, #{pplace,jdbcType=VARCHAR}, #{padress,jdbcType=VARCHAR}, 
+      #{pbirthday,jdbcType=DATE}, #{pschool,jdbcType=VARCHAR}, #{pculture,jdbcType=VARCHAR}, 
+      #{pgraduationdate,jdbcType=DATE}, #{pmajor,jdbcType=VARCHAR}, #{ppost,jdbcType=VARCHAR}, 
+      #{pjoindate,jdbcType=DATE}, #{pqualification,jdbcType=VARCHAR}, #{pqualificationDate,jdbcType=DATE}, 
+      #{pidentity,jdbcType=VARCHAR}, #{pidcord,jdbcType=VARCHAR}, #{pset,jdbcType=VARCHAR}, 
+      #{plevel,jdbcType=VARCHAR}, #{premark,jdbcType=VARCHAR}, #{pstarts,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.po.PersonnelInfo" >
+    insert into personnel_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="pname != null" >
+        pname,
+      </if>
+      <if test="psex != null" >
+        psex,
+      </if>
+      <if test="ppassword != null" >
+        ppassword,
+      </if>
+      <if test="pphoto != null" >
+        pphoto,
+      </if>
+      <if test="pphone != null" >
+        pphone,
+      </if>
+      <if test="pplace != null" >
+        pplace,
+      </if>
+      <if test="padress != null" >
+        padress,
+      </if>
+      <if test="pbirthday != null" >
+        pbirthday,
+      </if>
+      <if test="pschool != null" >
+        pschool,
+      </if>
+      <if test="pculture != null" >
+        pculture,
+      </if>
+      <if test="pgraduationdate != null" >
+        pgraduationdate,
+      </if>
+      <if test="pmajor != null" >
+        pmajor,
+      </if>
+      <if test="ppost != null" >
+        ppost,
+      </if>
+      <if test="pjoindate != null" >
+        pjoindate,
+      </if>
+      <if test="pqualification != null" >
+        pqualification,
+      </if>
+      <if test="pqualificationDate != null" >
+        pqualification_date,
+      </if>
+      <if test="pidentity != null" >
+        pidentity,
+      </if>
+      <if test="pidcord != null" >
+        pidcord,
+      </if>
+      <if test="pset != null" >
+        pset,
+      </if>
+      <if test="plevel != null" >
+        plevel,
+      </if>
+      <if test="premark != null" >
+        premark,
+      </if>
+      <if test="pstarts != null" >
+        pstarts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="psex != null" >
+        #{psex,jdbcType=VARCHAR},
+      </if>
+      <if test="ppassword != null" >
+        #{ppassword,jdbcType=VARCHAR},
+      </if>
+      <if test="pphoto != null" >
+        #{pphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="pphone != null" >
+        #{pphone,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null" >
+        #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="padress != null" >
+        #{padress,jdbcType=VARCHAR},
+      </if>
+      <if test="pbirthday != null" >
+        #{pbirthday,jdbcType=DATE},
+      </if>
+      <if test="pschool != null" >
+        #{pschool,jdbcType=VARCHAR},
+      </if>
+      <if test="pculture != null" >
+        #{pculture,jdbcType=VARCHAR},
+      </if>
+      <if test="pgraduationdate != null" >
+        #{pgraduationdate,jdbcType=DATE},
+      </if>
+      <if test="pmajor != null" >
+        #{pmajor,jdbcType=VARCHAR},
+      </if>
+      <if test="ppost != null" >
+        #{ppost,jdbcType=VARCHAR},
+      </if>
+      <if test="pjoindate != null" >
+        #{pjoindate,jdbcType=DATE},
+      </if>
+      <if test="pqualification != null" >
+        #{pqualification,jdbcType=VARCHAR},
+      </if>
+      <if test="pqualificationDate != null" >
+        #{pqualificationDate,jdbcType=DATE},
+      </if>
+      <if test="pidentity != null" >
+        #{pidentity,jdbcType=VARCHAR},
+      </if>
+      <if test="pidcord != null" >
+        #{pidcord,jdbcType=VARCHAR},
+      </if>
+      <if test="pset != null" >
+        #{pset,jdbcType=VARCHAR},
+      </if>
+      <if test="plevel != null" >
+        #{plevel,jdbcType=VARCHAR},
+      </if>
+      <if test="premark != null" >
+        #{premark,jdbcType=VARCHAR},
+      </if>
+      <if test="pstarts != null" >
+        #{pstarts,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.po.PersonnelInfo" >
+    update personnel_info
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="pname != null" >
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="psex != null" >
+        psex = #{psex,jdbcType=VARCHAR},
+      </if>
+      <if test="ppassword != null" >
+        ppassword = #{ppassword,jdbcType=VARCHAR},
+      </if>
+      <if test="pphoto != null" >
+        pphoto = #{pphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="pphone != null" >
+        pphone = #{pphone,jdbcType=VARCHAR},
+      </if>
+      <if test="pplace != null" >
+        pplace = #{pplace,jdbcType=VARCHAR},
+      </if>
+      <if test="padress != null" >
+        padress = #{padress,jdbcType=VARCHAR},
+      </if>
+      <if test="pbirthday != null" >
+        pbirthday = #{pbirthday,jdbcType=DATE},
+      </if>
+      <if test="pschool != null" >
+        pschool = #{pschool,jdbcType=VARCHAR},
+      </if>
+      <if test="pculture != null" >
+        pculture = #{pculture,jdbcType=VARCHAR},
+      </if>
+      <if test="pgraduationdate != null" >
+        pgraduationdate = #{pgraduationdate,jdbcType=DATE},
+      </if>
+      <if test="pmajor != null" >
+        pmajor = #{pmajor,jdbcType=VARCHAR},
+      </if>
+      <if test="ppost != null" >
+        ppost = #{ppost,jdbcType=VARCHAR},
+      </if>
+      <if test="pjoindate != null" >
+        pjoindate = #{pjoindate,jdbcType=DATE},
+      </if>
+      <if test="pqualification != null" >
+        pqualification = #{pqualification,jdbcType=VARCHAR},
+      </if>
+      <if test="pqualificationDate != null" >
+        pqualification_date = #{pqualificationDate,jdbcType=DATE},
+      </if>
+      <if test="pidentity != null" >
+        pidentity = #{pidentity,jdbcType=VARCHAR},
+      </if>
+      <if test="pidcord != null" >
+        pidcord = #{pidcord,jdbcType=VARCHAR},
+      </if>
+      <if test="pset != null" >
+        pset = #{pset,jdbcType=VARCHAR},
+      </if>
+      <if test="plevel != null" >
+        plevel = #{plevel,jdbcType=VARCHAR},
+      </if>
+      <if test="premark != null" >
+        premark = #{premark,jdbcType=VARCHAR},
+      </if>
+      <if test="pstarts != null" >
+        pstarts = #{pstarts,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.po.PersonnelInfo" >
+    update personnel_info
+    set uid = #{uid,jdbcType=VARCHAR},
+      pname = #{pname,jdbcType=VARCHAR},
+      psex = #{psex,jdbcType=VARCHAR},
+      ppassword = #{ppassword,jdbcType=VARCHAR},
+      pphoto = #{pphoto,jdbcType=VARCHAR},
+      pphone = #{pphone,jdbcType=VARCHAR},
+      pplace = #{pplace,jdbcType=VARCHAR},
+      padress = #{padress,jdbcType=VARCHAR},
+      pbirthday = #{pbirthday,jdbcType=DATE},
+      pschool = #{pschool,jdbcType=VARCHAR},
+      pculture = #{pculture,jdbcType=VARCHAR},
+      pgraduationdate = #{pgraduationdate,jdbcType=DATE},
+      pmajor = #{pmajor,jdbcType=VARCHAR},
+      ppost = #{ppost,jdbcType=VARCHAR},
+      pjoindate = #{pjoindate,jdbcType=DATE},
+      pqualification = #{pqualification,jdbcType=VARCHAR},
+      pqualification_date = #{pqualificationDate,jdbcType=DATE},
+      pidentity = #{pidentity,jdbcType=VARCHAR},
+      pidcord = #{pidcord,jdbcType=VARCHAR},
+      pset = #{pset,jdbcType=VARCHAR},
+      plevel = #{plevel,jdbcType=VARCHAR},
+      premark = #{premark,jdbcType=VARCHAR},
+      pstarts = #{pstarts,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

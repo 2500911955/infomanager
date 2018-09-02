@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.ScienceapplyMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.po.Scienceapply" >
+    <id column="said" property="said" jdbcType="INTEGER" />
+    <result column="saname" property="saname" jdbcType="VARCHAR" />
+    <result column="saclass" property="saclass" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="sagroup" property="sagroup" jdbcType="VARCHAR" />
+    <result column="saexpenditure" property="saexpenditure" jdbcType="VARCHAR" />
+    <result column="sacontent" property="sacontent" jdbcType="VARCHAR" />
+    <result column="saremark" property="saremark" jdbcType="VARCHAR" />
+    <result column="saaccessory" property="saaccessory" jdbcType="VARCHAR" />
+    <result column="sadepart_idea" property="sadepartIdea" jdbcType="VARCHAR" />
+    <result column="sascience_idea" property="sascienceIdea" jdbcType="VARCHAR" />
+    <result column="sastate" property="sastate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    said, saname, saclass, uid, sagroup, saexpenditure, sacontent, saremark, saaccessory, 
+    sadepart_idea, sascience_idea, sastate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from scienceapply
+    where said = #{said,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from scienceapply
+    where said = #{said,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.po.Scienceapply" >
+    insert into scienceapply (said, saname, saclass, 
+      uid, sagroup, saexpenditure, 
+      sacontent, saremark, saaccessory, 
+      sadepart_idea, sascience_idea, sastate
+      )
+    values (#{said,jdbcType=INTEGER}, #{saname,jdbcType=VARCHAR}, #{saclass,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=VARCHAR}, #{sagroup,jdbcType=VARCHAR}, #{saexpenditure,jdbcType=VARCHAR}, 
+      #{sacontent,jdbcType=VARCHAR}, #{saremark,jdbcType=VARCHAR}, #{saaccessory,jdbcType=VARCHAR}, 
+      #{sadepartIdea,jdbcType=VARCHAR}, #{sascienceIdea,jdbcType=VARCHAR}, #{sastate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.po.Scienceapply" >
+    insert into scienceapply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="said != null" >
+        said,
+      </if>
+      <if test="saname != null" >
+        saname,
+      </if>
+      <if test="saclass != null" >
+        saclass,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="sagroup != null" >
+        sagroup,
+      </if>
+      <if test="saexpenditure != null" >
+        saexpenditure,
+      </if>
+      <if test="sacontent != null" >
+        sacontent,
+      </if>
+      <if test="saremark != null" >
+        saremark,
+      </if>
+      <if test="saaccessory != null" >
+        saaccessory,
+      </if>
+      <if test="sadepartIdea != null" >
+        sadepart_idea,
+      </if>
+      <if test="sascienceIdea != null" >
+        sascience_idea,
+      </if>
+      <if test="sastate != null" >
+        sastate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="said != null" >
+        #{said,jdbcType=INTEGER},
+      </if>
+      <if test="saname != null" >
+        #{saname,jdbcType=VARCHAR},
+      </if>
+      <if test="saclass != null" >
+        #{saclass,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="sagroup != null" >
+        #{sagroup,jdbcType=VARCHAR},
+      </if>
+      <if test="saexpenditure != null" >
+        #{saexpenditure,jdbcType=VARCHAR},
+      </if>
+      <if test="sacontent != null" >
+        #{sacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="saremark != null" >
+        #{saremark,jdbcType=VARCHAR},
+      </if>
+      <if test="saaccessory != null" >
+        #{saaccessory,jdbcType=VARCHAR},
+      </if>
+      <if test="sadepartIdea != null" >
+        #{sadepartIdea,jdbcType=VARCHAR},
+      </if>
+      <if test="sascienceIdea != null" >
+        #{sascienceIdea,jdbcType=VARCHAR},
+      </if>
+      <if test="sastate != null" >
+        #{sastate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.po.Scienceapply" >
+    update scienceapply
+    <set >
+      <if test="saname != null" >
+        saname = #{saname,jdbcType=VARCHAR},
+      </if>
+      <if test="saclass != null" >
+        saclass = #{saclass,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="sagroup != null" >
+        sagroup = #{sagroup,jdbcType=VARCHAR},
+      </if>
+      <if test="saexpenditure != null" >
+        saexpenditure = #{saexpenditure,jdbcType=VARCHAR},
+      </if>
+      <if test="sacontent != null" >
+        sacontent = #{sacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="saremark != null" >
+        saremark = #{saremark,jdbcType=VARCHAR},
+      </if>
+      <if test="saaccessory != null" >
+        saaccessory = #{saaccessory,jdbcType=VARCHAR},
+      </if>
+      <if test="sadepartIdea != null" >
+        sadepart_idea = #{sadepartIdea,jdbcType=VARCHAR},
+      </if>
+      <if test="sascienceIdea != null" >
+        sascience_idea = #{sascienceIdea,jdbcType=VARCHAR},
+      </if>
+      <if test="sastate != null" >
+        sastate = #{sastate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where said = #{said,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.po.Scienceapply" >
+    update scienceapply
+    set saname = #{saname,jdbcType=VARCHAR},
+      saclass = #{saclass,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      sagroup = #{sagroup,jdbcType=VARCHAR},
+      saexpenditure = #{saexpenditure,jdbcType=VARCHAR},
+      sacontent = #{sacontent,jdbcType=VARCHAR},
+      saremark = #{saremark,jdbcType=VARCHAR},
+      saaccessory = #{saaccessory,jdbcType=VARCHAR},
+      sadepart_idea = #{sadepartIdea,jdbcType=VARCHAR},
+      sascience_idea = #{sascienceIdea,jdbcType=VARCHAR},
+      sastate = #{sastate,jdbcType=VARCHAR}
+    where said = #{said,jdbcType=INTEGER}
+  </update>
+</mapper>

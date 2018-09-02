@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.AchievementMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.po.Achievement" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="said" property="said" jdbcType="INTEGER" />
+    <result column="asbstract" property="asbstract" jdbcType="VARCHAR" />
+    <result column="ageneralize" property="ageneralize" jdbcType="VARCHAR" />
+    <result column="asbstractlevel" property="asbstractlevel" jdbcType="VARCHAR" />
+    <result column="aaccessory" property="aaccessory" jdbcType="VARCHAR" />
+    <result column="aauditsuccess" property="aauditsuccess" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aid, said, asbstract, ageneralize, asbstractlevel, aaccessory, aauditsuccess
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from achievement
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from achievement
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.po.Achievement" >
+    insert into achievement (aid, said, asbstract, 
+      ageneralize, asbstractlevel, aaccessory, 
+      aauditsuccess)
+    values (#{aid,jdbcType=INTEGER}, #{said,jdbcType=INTEGER}, #{asbstract,jdbcType=VARCHAR}, 
+      #{ageneralize,jdbcType=VARCHAR}, #{asbstractlevel,jdbcType=VARCHAR}, #{aaccessory,jdbcType=VARCHAR}, 
+      #{aauditsuccess,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.po.Achievement" >
+    insert into achievement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="said != null" >
+        said,
+      </if>
+      <if test="asbstract != null" >
+        asbstract,
+      </if>
+      <if test="ageneralize != null" >
+        ageneralize,
+      </if>
+      <if test="asbstractlevel != null" >
+        asbstractlevel,
+      </if>
+      <if test="aaccessory != null" >
+        aaccessory,
+      </if>
+      <if test="aauditsuccess != null" >
+        aauditsuccess,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="said != null" >
+        #{said,jdbcType=INTEGER},
+      </if>
+      <if test="asbstract != null" >
+        #{asbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="ageneralize != null" >
+        #{ageneralize,jdbcType=VARCHAR},
+      </if>
+      <if test="asbstractlevel != null" >
+        #{asbstractlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="aaccessory != null" >
+        #{aaccessory,jdbcType=VARCHAR},
+      </if>
+      <if test="aauditsuccess != null" >
+        #{aauditsuccess,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.po.Achievement" >
+    update achievement
+    <set >
+      <if test="said != null" >
+        said = #{said,jdbcType=INTEGER},
+      </if>
+      <if test="asbstract != null" >
+        asbstract = #{asbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="ageneralize != null" >
+        ageneralize = #{ageneralize,jdbcType=VARCHAR},
+      </if>
+      <if test="asbstractlevel != null" >
+        asbstractlevel = #{asbstractlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="aaccessory != null" >
+        aaccessory = #{aaccessory,jdbcType=VARCHAR},
+      </if>
+      <if test="aauditsuccess != null" >
+        aauditsuccess = #{aauditsuccess,jdbcType=DATE},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.po.Achievement" >
+    update achievement
+    set said = #{said,jdbcType=INTEGER},
+      asbstract = #{asbstract,jdbcType=VARCHAR},
+      ageneralize = #{ageneralize,jdbcType=VARCHAR},
+      asbstractlevel = #{asbstractlevel,jdbcType=VARCHAR},
+      aaccessory = #{aaccessory,jdbcType=VARCHAR},
+      aauditsuccess = #{aauditsuccess,jdbcType=DATE}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>

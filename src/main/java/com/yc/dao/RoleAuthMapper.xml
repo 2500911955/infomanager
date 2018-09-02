@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.RoleAuthMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.po.RoleAuth" >
+    <id column="raid" property="raid" jdbcType="INTEGER" />
+    <result column="rid" property="rid" jdbcType="INTEGER" />
+    <result column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="raname" property="raname" jdbcType="VARCHAR" />
+    <result column="raurl" property="raurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    raid, rid, aid, raname, raurl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from role_auth
+    where raid = #{raid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from role_auth
+    where raid = #{raid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.po.RoleAuth" >
+    insert into role_auth (raid, rid, aid, 
+      raname, raurl)
+    values (#{raid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, 
+      #{raname,jdbcType=VARCHAR}, #{raurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.po.RoleAuth" >
+    insert into role_auth
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="raid != null" >
+        raid,
+      </if>
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="raname != null" >
+        raname,
+      </if>
+      <if test="raurl != null" >
+        raurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="raid != null" >
+        #{raid,jdbcType=INTEGER},
+      </if>
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="raname != null" >
+        #{raname,jdbcType=VARCHAR},
+      </if>
+      <if test="raurl != null" >
+        #{raurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.po.RoleAuth" >
+    update role_auth
+    <set >
+      <if test="rid != null" >
+        rid = #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null" >
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="raname != null" >
+        raname = #{raname,jdbcType=VARCHAR},
+      </if>
+      <if test="raurl != null" >
+        raurl = #{raurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where raid = #{raid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.po.RoleAuth" >
+    update role_auth
+    set rid = #{rid,jdbcType=INTEGER},
+      aid = #{aid,jdbcType=INTEGER},
+      raname = #{raname,jdbcType=VARCHAR},
+      raurl = #{raurl,jdbcType=VARCHAR}
+    where raid = #{raid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.BearpalmInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.po.BearpalmInfo" >
+    <id column="bid" property="bid" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="bdate" property="bdate" jdbcType="DATE" />
+    <result column="blevel" property="blevel" jdbcType="VARCHAR" />
+    <result column="bname" property="bname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bid, pid, bdate, blevel, bname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bearpalm_info
+    where bid = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bearpalm_info
+    where bid = #{bid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.po.BearpalmInfo" >
+    insert into bearpalm_info (bid, pid, bdate, 
+      blevel, bname)
+    values (#{bid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{bdate,jdbcType=DATE}, 
+      #{blevel,jdbcType=VARCHAR}, #{bname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.po.BearpalmInfo" >
+    insert into bearpalm_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        bid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="bdate != null" >
+        bdate,
+      </if>
+      <if test="blevel != null" >
+        blevel,
+      </if>
+      <if test="bname != null" >
+        bname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="bdate != null" >
+        #{bdate,jdbcType=DATE},
+      </if>
+      <if test="blevel != null" >
+        #{blevel,jdbcType=VARCHAR},
+      </if>
+      <if test="bname != null" >
+        #{bname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.po.BearpalmInfo" >
+    update bearpalm_info
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="bdate != null" >
+        bdate = #{bdate,jdbcType=DATE},
+      </if>
+      <if test="blevel != null" >
+        blevel = #{blevel,jdbcType=VARCHAR},
+      </if>
+      <if test="bname != null" >
+        bname = #{bname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.po.BearpalmInfo" >
+    update bearpalm_info
+    set pid = #{pid,jdbcType=INTEGER},
+      bdate = #{bdate,jdbcType=DATE},
+      blevel = #{blevel,jdbcType=VARCHAR},
+      bname = #{bname,jdbcType=VARCHAR}
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+</mapper>
