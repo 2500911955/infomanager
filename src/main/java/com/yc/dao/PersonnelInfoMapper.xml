@@ -27,6 +27,16 @@
     <result column="premark" property="premark" jdbcType="VARCHAR" />
     <result column="pstarts" property="pstarts" jdbcType="VARCHAR" />
   </resultMap>
+   <resultMap id="ResultMapWithBLOBs" type="com.yc.po.PersonnelInfo" extends="BaseResultMap" >
+    <result column="DESCRIPTION" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <resultMap type="com.yc.po.PersonnelInfo" id="ResultMapWithUnit" extends="ResultMapWithBLOBs">
+  	<collection property="unit" ofType="com.yc.po.Unit">
+  		<id property="uid" column="ID"/>
+  		<result property="uname" column="UNAME" />
+  	</collection>
+  </resultMap>
+  
   <sql id="Base_Column_List" >
     pid, uid, pname, psex, ppassword, pphoto, pphone, pplace, padress, pbirthday, pschool, 
     pculture, pgraduationdate, pmajor, ppost, pjoindate, pqualification, pqualification_date, 
@@ -38,6 +48,11 @@
     from personnel_info
     where pid = #{pid,jdbcType=INTEGER}
   </select>
+  
+  <select id="findAll" resultMap="ResultMapWithUnit">
+  	SELECT p.*,u.`uname`,u.`uid` AS id FROM personnel_info p,unit u WHERE p.`uid` = u.`uid`
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from personnel_info
     where pid = #{pid,jdbcType=INTEGER}

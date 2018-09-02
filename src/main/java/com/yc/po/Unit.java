@@ -1,12 +1,16 @@
 package com.yc.po;
 
+import java.io.Serializable;
+
 /**
  * 单位表
  * 
  * @author c语言
  *
  */
-public class Unit {
+public class Unit implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private Integer uid; // 单位id
 
 	private String uname; // 单位名称

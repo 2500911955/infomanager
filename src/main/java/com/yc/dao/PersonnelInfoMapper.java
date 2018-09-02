@@ -17,5 +17,5 @@ public interface PersonnelInfoMapper {
 
     int updateByPrimaryKey(PersonnelInfo record);
 
-	List findPerson();
+	List<PersonnelInfo> findAll();
 }

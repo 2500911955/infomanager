@@ -54,6 +54,16 @@ public class PersonnelInfo implements Serializable {
 
 	private String pstarts; // 是否员工
 
+	private Unit unit; // 单位表
+
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
+
 	public Integer getPid() {
 		return pid;
 	}
@@ -254,7 +264,7 @@ public class PersonnelInfo implements Serializable {
 				+ ", pgraduationdate=" + pgraduationdate + ", pmajor=" + pmajor + ", ppost=" + ppost + ", pjoindate="
 				+ pjoindate + ", pqualification=" + pqualification + ", pqualificationDate=" + pqualificationDate
 				+ ", pidentity=" + pidentity + ", pidcord=" + pidcord + ", pset=" + pset + ", plevel=" + plevel
-				+ ", premark=" + premark + ", pstarts=" + pstarts + "]";
+				+ ", premark=" + premark + ", pstarts=" + pstarts + ", unit=" + unit + "]";
 	}
 
 }

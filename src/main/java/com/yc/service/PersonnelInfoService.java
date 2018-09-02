@@ -1,10 +1,11 @@
 package com.yc.service;
 
-import com.github.pagehelper.PageInfo;
+import java.util.List;
+
+import com.yc.po.PersonnelInfo;
 
 public interface PersonnelInfoService {
 
-	@SuppressWarnings("rawtypes")
-	PageInfo findPerson(Integer n, Integer size);
+	List<PersonnelInfo> findAll();
 
 }
