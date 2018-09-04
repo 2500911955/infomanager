@@ -30,6 +30,7 @@ $("#base_save").click(function () {
         }
 
 });
+//重置密码
 $("#pwd_save").click(function () {
     if($("#modifyPwd").valid()){
         $.ajax({

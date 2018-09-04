@@ -2,6 +2,9 @@ package com.yc.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 import com.yc.po.PersonnelInfo;
 
 public interface PersonnelInfoMapper {
@@ -18,4 +21,7 @@ public interface PersonnelInfoMapper {
     int updateByPrimaryKey(PersonnelInfo record);
 
 	List findPerson();
+	
+	@Select("select * from personnel_info where pname = #{username} and ppassword = #{password}")
+	PersonnelInfo isLogin(@Param("username")String username,@Param("password")String password);
 }

@@ -2,6 +2,7 @@ package com.yc.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import com.yc.service.PersonnelInfoService;
 @MapperScan("com.yc.dao")
 public class PersonnelInfoServiceImpl implements PersonnelInfoService {
 	@Autowired
-	PersonnelInfoMapper PersonnelInfoMapper;
+	private PersonnelInfoMapper PersonnelInfoMapper;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -27,6 +28,12 @@ public class PersonnelInfoServiceImpl implements PersonnelInfoService {
 		List person = PersonnelInfoMapper.findPerson();
 		PageInfo pageInfo = new PageInfo<PersonnelInfo>(person);
 		return pageInfo;
+	}
+
+	//登录处理
+	@Override
+	public PersonnelInfo isLogin(String username,String password) {
+		return PersonnelInfoMapper.isLogin(username, password);
 	}
 
 }
