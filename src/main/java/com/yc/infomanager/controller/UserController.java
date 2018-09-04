@@ -39,23 +39,25 @@ public class UserController {
 		return prefix+"/main";
 	}
 	
+	//查看个人信息
 	@RequestMapping("/sys/user/personal")
 	public String personal() {
 		return prefix+"/personal";
 	}
 	
-	@RequestMapping("user/updatePeronal")
-	public String updatePersonal() {
+	/*@RequestMapping("user/updatePeronal")
+	public String updatePersonal(PersonnelInfo person) {
+		System.out.println("hHaa"+person);
 		return null;
-	}
+	}*/
 	
-	//重置密码
+	/*//重置密码
 	@GetMapping("user/resetPwd")
 	public String resetPwd(Model model,HttpSession session) {
 		//取出当前登录用户
 		return prefix + "/reset_pwd";
 	}
-
+*/
 	
 	@PostMapping("user/adminResetPwd")
 	public String resetPwd() {
