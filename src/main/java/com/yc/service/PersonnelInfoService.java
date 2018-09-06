@@ -8,4 +8,6 @@ public interface PersonnelInfoService {
 
 	List<PersonnelInfo> findAll();
 
+	int deleteById(Integer pid);
+
 }

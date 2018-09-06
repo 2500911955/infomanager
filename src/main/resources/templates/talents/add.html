@@ -17,13 +17,14 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">姓名：</label>
 								<div class="col-sm-8">
-									<input id="pname" name="pname" class="form-control" type="text">
-								</div>
+     								<input id="pname" name="pname" class="form-control" type="text">
+   								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">单位：</label>
 								<div class="col-sm-8">
-									<input id="punit" name="punit" class="form-control" type="text">
+									<select id="uid" name="uid" class="form-control">
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
@@ -157,6 +158,17 @@
 									<textarea rows="8" class="form-control"></textarea>
 								</div>
 							</div>
+							<div class="form-group" align="center">
+								推荐情况
+							</div>
+							<div class="form-group" >
+								<label class="col-sm-3 control-label">推荐名称：</label>
+								<input id="rname" name="rname" class="form-control" type="text" style="width:100px">
+								<label class="col-sm-3 control-label">推荐时间：</label>
+								<input id="rdate" name="rdate" class="form-control" type="date" style="width:100px">
+								<label class="col-sm-3 control-label">推荐级别：</label>
+								<input id="rlevel" name="rlevel" class="form-control" type="date" style="width:100px">
+							</div>
 							<div class="form-group">
 								<div class="col-sm-8 col-sm-offset-3">
 									<button type="submit" class="btn btn-primary">提交</button>
@@ -170,8 +182,8 @@
 		</div>
 	</div>
 	<div th:include="include::footer"></div>
-	<!-- <script type="text/javascript" src="/js/appjs/sys/role/add.js">
-	</script> -->
+	<script type="text/javascript" src="/js/appjs/sys/talents/add.js">
+	
+	</script>
 </body>
-
 </html>

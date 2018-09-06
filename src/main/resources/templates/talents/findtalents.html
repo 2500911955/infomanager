@@ -8,20 +8,64 @@
 		<div class="col-sm-12">
 			<div class="ibox">
 				<div class="ibox-body">
-					<div id="exampleToolbar" role="group">
-					<!-- shiro:hasPermission="sys:role:add"  -->
-						<!-- <button type="button"
-							class="btn btn-primary" onclick="add()">
-							<i class="fa fa-plus" aria-hidden="true"></i>添加
-						</button>
-						shiro:hasPermission="sys:role:batchRemove" 
-						<button type="button"
-							class="btn btn-danger" onclick="batchRemove()">
-							<i class="fa fa-trash" aria-hidden="true"></i>删除
-						</button> -->
+					<div id="toolbar">
+						<!-- <form class="form-inline">
+							<div class="form-group">
+								<label class="sr-only" for="product_line">姓名</label>
+								<div class="input-group">
+									<div class="input-group-addon">姓名</div>
+									<input type="text" class="form-control" name="searchTexts" id="searchText" placeholder="请输入姓名" style="width:100px">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="msg_type">单位</label>
+								<div class="input-group">
+									<div class="input-group-addon">单位</div>
+									<select class="form-control" name="msg_type" id="msgType">
+										<option value="">请选择单位</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="msg_type">籍贯</label>
+								<div class="input-group">
+									<div class="input-group-addon">籍贯</div>
+									<input type="text" class="form-control" name="searchTexts" id="searchText" placeholder="请输入籍贯" style="width:100px">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="msg_type">任职资格</label>
+								<div class="input-group">
+									<div class="input-group-addon">任职资格</div>
+									<input type="text" class="form-control" name="searchTexts" id="searchText" placeholder="请输入任职资格" style="width:80px">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="msg_type">身份</label>
+								<div class="input-group">
+									<div class="input-group-addon">身份</div>
+									<input type="text" class="form-control" name="searchTexts" id="searchText" placeholder="请输入身份" style="width:80px">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="msg_type">系列</label>
+								<div class="input-group">
+									<div class="input-group-addon">系列</div>
+									<input type="text" class="form-control" name="searchTexts" id="searchText" placeholder="请输入系列" style="width:80px">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="msg_type">级别</label>
+								<div class="input-group">
+									<div class="input-group-addon">级别</div>
+									<input type="text" class="form-control" name="searchTexts" id="searchText" placeholder="请输入级别" style="width:80px">
+								</div>
+							</div>
+							<button type="button" class="btn btn-primary queryButton">查询</button>
+						</form> -->
+						<table id="exampleTable" data-mobile-responsive="true">
+						</table>
 					</div>
-					<table id="exampleTable" data-mobile-responsive="true">
-					</table>
 				</div>
 			</div>
 		</div>
@@ -49,5 +93,4 @@
 		
 	</script>
 </body>
-
 </html>

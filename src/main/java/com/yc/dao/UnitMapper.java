@@ -1,5 +1,9 @@
 package com.yc.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
 import com.yc.po.Unit;
 
 public interface UnitMapper {
@@ -14,4 +18,7 @@ public interface UnitMapper {
     int updateByPrimaryKeySelective(Unit record);
 
     int updateByPrimaryKey(Unit record);
+
+    @Select("select * from unit")
+	List<Unit> findAll();
 }

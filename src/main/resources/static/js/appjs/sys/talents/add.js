@@ -4,6 +4,7 @@ var menuIds;
 $(function() {
 	getMenuTreeData();
 	validateRule();
+	findUnit();
 });
 $.validator.setDefaults({
 	submitHandler : function() {
@@ -11,6 +12,17 @@ $.validator.setDefaults({
 		save();
 	}
 });
+
+function findUnit() {
+	$.post("/talents/findUnit", function(data) {
+		$("#uid").empty();
+		var str = "";
+		for (var i = 0; i < data.length; i++) {
+			str += "<option value="+ data[i].uid +">" + data[i].uname + "</option>";
+		}
+		$("#uid").append($(str));
+	}, "json");
+}
 
 function getAllSelectNodes() {
 	var ref = $('#menuTree').jstree(true); // 获得整个树
@@ -41,7 +53,6 @@ function loadMenuTree(menuTree) {
 		"plugins" : [ "wholerow", "checkbox" ]
 	});
 	//$('#menuTree').jstree("open_all");
-
 }
 
 function save() {

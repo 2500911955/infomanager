@@ -21,4 +21,9 @@ public class PersonnelInfoServiceImpl implements PersonnelInfoService {
 		return personnelInfoMapper.findAll();
 	}
 
+	@Override
+	public int deleteById(Integer pid) {
+		return personnelInfoMapper.deleteByKey(pid);
+	}
+
 }

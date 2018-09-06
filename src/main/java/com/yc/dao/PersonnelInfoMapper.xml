@@ -50,7 +50,7 @@
   </select>
   
   <select id="findAll" resultMap="ResultMapWithUnit">
-  	SELECT p.*,u.`uname`,u.`uid` AS id FROM personnel_info p,unit u WHERE p.`uid` = u.`uid`
+  	SELECT p.*,u.`uname`,u.`uid` AS id FROM personnel_info p,unit u WHERE p.`uid` = u.`uid` AND p.`pstarts` = 0
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
