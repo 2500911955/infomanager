@@ -18,6 +18,13 @@ public class ProjectsController {
 		public String goprojectadd(){
 			return "projects/add";
 		}
+		
+		//跳转到科技项目查询
+		@RequestMapping("projects/projectedit")
+		public String projectedit() {
+			return "projects/findprojectlook";
+		}
+		
 		@RequestMapping("projects/edit")
 		public String goprojectsedit(){
 			return "projects/edit";

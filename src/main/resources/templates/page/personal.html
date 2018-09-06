@@ -30,7 +30,8 @@
                                     <span>姓名:</span>
                                 </div>
                                 <div class="gg-formDetail">
-                                    <input type="text" class="form-control" id="userName" name="name" value="admin"  placeholder="请输入姓名" />
+                                      <span th:text="${session.loginPerson.pname}"></span>
+                                   <!--  <input type="text" class="form-control" id="pname" name="pname" th:value="${session.loginPerson.pname}"  placeholder="请输入姓名" /> -->
                                 </div>
                             </div>
                             <div class="gg-formGroup">
@@ -40,8 +41,8 @@
                                 </div>
                                 <div class="gg-formDetail">
                                     <div class="radio i-checks">
-                                     <input type="text" class="form-control" id="sex" name="sex"  value="女" />
-                                        </label>
+                                     <span th:text="${session.loginPerson.psex}"></span>
+                                     <!-- <input type="text" class="form-control" id="psex" name="psex"  th:value="${session.loginPerson.psex}"/> -->
                                     </div>
                                 </div>
                             </div>
@@ -50,9 +51,20 @@
                                     <em class="gg-star">*</em>
                                     <span>出生年月:</span>
                                 </div>
+                               <div class="gg-formDetail">
+                               <span th:text="${session.loginPerson.pbirthday}==null?null:${#dates.format(session.loginPerson.pbirthday,'yyyy-MM-dd')}"></span>
+                                    <!-- <input type="text" class="laydate-icon layer-date form-control" id="pbirthday" name="pbirthday" th:value="${session.loginPerson.pbirthday}==null?null:${#dates.format(session.loginPerson.pbirthday,'yyyy-MM-dd')}" placeholder="请选择出生年月"
+                                           onclick="laydate({istime: true, format: 'YYYY-MM-DD'})" style="background-color: #fff;" readonly="readonly"/> -->
+                                </div>
+                            </div>
+                            <div class="gg-formGroup">
+                                <div class="gg-formTitle">
+                                    <em class="gg-star">*</em>
+                                    <span>身份证:</span>
+                                </div>
                                 <div class="gg-formDetail">
-                                    <input type="text"  class="form-control"   id="birth" name="birth" value="2000-07-01" placeholder="请选择出生年月"
-                                            style="background-color: #fff;" readonly="readonly"/>
+                                 <span th:text="${session.loginPerson.pidcord}"></span>
+                                   <!--  <input type="text" class="form-control" id="pidcord" name="pidcord" th:value="${session.loginPerson.pidcord}" placeholder="请输入您的身份证" /> -->
                                 </div>
                             </div>
                             <div class="gg-formGroup">
@@ -61,22 +73,24 @@
                                     <span>手机:</span>
                                 </div>
                                 <div class="gg-formDetail">
-                                    <input type="text" class="form-control" id="phone" name="mobile"  value="15674789906" placeholder="请输入手机号" />
-                                </div>
-                            </div>
-                            <div class="gg-formGroup">
-                                <div class="gg-formTitle">
-                                    <em class="gg-star">*</em>
-                                    <span>邮箱:</span>
-                                </div>
-                                <div class="gg-formDetail">
-                                    <input type="text" class="form-control" id="email" name="email" value="930254017@qq.com" placeholder="请输入邮箱" />
+                                    <span th:text="${session.loginPerson.pphone}"></span>
+                                   <!--  <input type="text" class="form-control" id="pphone" name="pphone"  th:value="${session.loginPerson.pphone}" placeholder="请输入手机号" /> -->
                                 </div>
                             </div>
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
                                     <span>籍贯:</span>
+                                </div>
+                                <div class="gg-formDetail">
+                                    <span th:text="${session.loginPerson.pplace}"></span>
+                                   <!--  <input type="text" class="form-control"  id="pplace" name="pplace" th:value="${session.loginPerson.pplace}" placeholder="请输入籍贯" /> -->
+                                </div>
+                            </div>
+                            <!-- <div class="gg-formGroup">
+                                <div class="gg-formTitle">
+                                    <em class="gg-star">*</em>
+                                    <span>居住地址:</span>
                                 </div>
                                 <div class="gg-formDetail gg-font0" data-toggle="distpicker" >
                                     <div class="gg-area">
@@ -92,19 +106,50 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="gg-formGroup">
+                            </div> -->
+                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>联系地址:</span>
+                                    <span>毕业学校:</span>
                                 </div>
                                 <div class="gg-formDetail">
-                                    <input type="text" class="form-control" id="address" name="liveAddress" value="南华大学" placeholder="请输入居住地址" />
+                                    <span th:text="${session.loginPerson.pschool}"></span>
+                                   <!--  <input type="text" class="form-control" id="pschool" name="pschool" th:value="${session.loginPerson.pschool}" placeholder="请输入毕业学校" /> -->
+                                </div>
+                            </div>
+                             <div class="gg-formGroup">
+                                <div class="gg-formTitle">
+                                    <em class="gg-star">*</em>
+                                    <span>毕业时间:</span>
+                                </div>
+                                <div class="gg-formDetail">
+                                   <span th:text="${#dates.format(session.loginPerson.pgraduationdate,'yyyy-MM-dd')}"></span>
+                                   <!--  <input type="text" class="form-control" id="pgraduationdate" name="pgraduationdate" th:value="${#dates.format(session.loginPerson.pgraduationdate,'yyyy-MM-dd')}" placeholder="请输入毕业学校" /> -->
+                                </div>
+                            </div>
+                             <div class="gg-formGroup">
+                                <div class="gg-formTitle">
+                                    <em class="gg-star">*</em>
+                                    <span>文化程度:</span>
+                                </div>
+                                <div class="gg-formDetail">
+                                  <span th:text="${session.loginPerson.pculture}"></span>
+                                    <!-- <input type="text" class="form-control" id="pculture" name="pculture" th:value="${session.loginPerson.pculture}" placeholder="请输入文化程度" /> -->
+                                </div>
+                            </div>
+                             <div class="gg-formGroup">
+                                <div class="gg-formTitle">
+                                    <em class="gg-star">*</em>
+                                    <span>专业:</span>
+                                </div>
+                                <div class="gg-formDetail">
+                                    <span th:text="${session.loginPerson.pmajor}"></span>
+                                    <!-- <input type="text" class="form-control" id="pmajor" name="pmajor" th:value="${session.loginPerson.pmajor}" placeholder="请输入所学专业" /> -->
                                 </div>
                             </div>
                         </form>
                         <div class="gg-btnGroup">
-                            <button type="button" class="btn btn-sm btn-primary" id="base_save">保存</button>
+                            <!-- <button type="button" class="btn btn-sm btn-primary" id="base_save">保存</button> -->
                         </div>
                     </div>
                     <!--photo_info-->

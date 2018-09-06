@@ -125,7 +125,7 @@ function edit(id) {
 		maxmin : true,
 		shadeClose : true, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
-		content : prefix + '/projectedit'/* + id*/ // iframe的url
+		content : prefix + '/edit'/* + id*/ // iframe的url
 	});
 }
 function batchRemove() {
