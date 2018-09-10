@@ -4,13 +4,12 @@ $(function() {
 });
 
 function load() {
-	$('#exampleTable')
-			.bootstrapTable(
+	$('#exampleTable').bootstrapTable(
 					{
 						method : 'get', // 服务器数据的请求方式 get or post
-						url : prefix + "/list", // 服务器数据的加载地址
+						url : prefix + "/findAllApply", // 服务器数据的加载地址
 						striped : true, // 设置为true会有隔行变色效果
-						//dataType : "json", // 服务器返回的数据类型
+						dataType : "json", // 服务器返回的数据类型
 						pagination : true, // 设置为true会在底部显示分页条
 						// queryParamsType : "limit",
 						// //设置为limit则会发送符合RESTFull格式的参数
@@ -54,7 +53,7 @@ function load() {
 									align: 'center'
 								},
 								{
-									field : 'saground',
+									field : 'sagroup',
 									title : '项目组长',
 									align: 'center'
 								},
@@ -64,21 +63,35 @@ function load() {
 									 align: 'center'
 								},
 								{
+									field : 'sastate',
+									title : '审批状态',
+									align: 'center',
+									formatter:function(value,row,index){
+										if(value == 1) {
+											return "未审核";
+										} else if(value == 2) {
+											return "立项失败";
+										} else if(value == 3) {
+											return "立项成功";
+										}
+									}
+								},
+								{
 									title : '操作',
 									field : 'said',
 									align : 'center',
 									formatter : function(value, row, index) {
-										var e = '<a class="btn btn-primary btn-sm" href="#" mce_href="#" title="打开" onclick="read(\''
-											+ row.id
-											+ '\')"><i class="fa fa-book"></i></a> ';
+										if ( row.sastate == 1 ){
+											var e = '<a class="btn btn-primary btn-sm" href="#" mce_href="#" title="打开" onclick="read(\''
+												+ row.said
+												+ '\')"><i class="fa fa-book"></i></a> ';
+										}
 										return e;
 									}
 								} ],
-					data:[{said:"1",saname:"ddd",saclass:"油气勘探",saground:"dd",saexpenditure:"200000"
-						}]
-						
 					});
 }
+/*data:[{said:"1",saname:"ddd",saclass:"油气勘探",saground:"dd",saexpenditure:"200000"}]*/
 function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
 }
@@ -115,14 +128,17 @@ function remove(id) {
 	})
 
 }
-function read() {
+function read(id) {
 	layer.open({
 		type : 2,
 		title : '立项申请审批',
 		maxmin : true,
 		shadeClose : true, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
-		content : prefix + '/read/' // iframe的url
+		content : prefix + '/read?id='+ id ,// iframe的url
+		end: function () {
+            location.reload();
+        }
 	});
 }
 function batchRemove() {

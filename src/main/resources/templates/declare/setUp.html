@@ -14,67 +14,71 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">网上事项申报系统  > 科技项目立项申请</div>
 		<div class="declareform form-group-xs">
-		<form class="form-horizontal" role="form">
+		<form class="form-horizontal" enctype="multipart/form-data" method="post" role="form" action="/declare/applyProject">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">项目名称</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" />
+					<input name="saname" type="text" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">类别</label>
 				<div class="col-sm-10">
-					<select class="form-control">
-						<option>油田勘探</option>
-						<option>地质研究</option>
-						<option>油藏工程研究与评论</option>
-						<option>油气开采及新技术</option>
-						<option>节能环保</option>
-						<option>信息化</option>
-						<option>其他</option>
+					<select class="form-control" name="saclass">
+						<option value="油田勘探">油田勘探</option>
+						<option value="地质研究">地质研究</option>
+						<option value="油藏工程研究与评论">油藏工程研究与评论</option>
+						<option value="油气开采及新技术">油气开采及新技术</option>
+						<option value="节能环保">节能环保</option>
+						<option value="信息化">信息化</option>
+						<option value="其他">其他</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">申报单位</label>
 				<div class="col-sm-10">
-					<select class="form-control">
-						<option>东采油场</option>
-						<option>西采油厂</option>
-						<option>南采油厂</option>
-						<option>北采油厂</option>
+					<select class="form-control" name="uid">
+						<option value="东采油厂">东采油厂</option>
+						<option value="西采油厂">西采油厂</option>
+						<option value="南采油厂">南采油厂</option>
+						<option value="北采油厂">北采油厂</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">项目组长</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="" />
+					<input type="text" class="form-control" id="sagroup" name="sagroup"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">申报经费(万元)</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" />
+					<input type="number" class="form-control" name="saexpenditure"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">内容目的</label>
 				<div class="col-sm-10">
-					<textarea rows="8" class="form-control"></textarea>
+					<textarea rows="8" class="form-control" name="sacontent"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">备注</label>
 				<div class="col-sm-10">
-					<textarea rows="8" class="form-control"></textarea>
+					<textarea rows="8" class="form-control" name="saremark"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">附件</label>
-				<div class="col-sm-10">
-					<input class="form-control" type="file">
-					<a>增加附件</a>&nbsp;&nbsp;&nbsp;&nbsp;<a>移去附件</a>（项目申报书。项目汇总表等）
+				<div class="col-sm-10" id="d2">
+					<a class="addfile">增加附件</a>（项目申报书。项目汇总表等）
+					<input class="form-control" type="file" name="file"><!-- <a class="remove">移除附件</a> -->
+					<!-- <input class="form-control" type="file" name="file"> -->
+					<!-- <input class="form-control" type="file" multiple="multiple" name="file"> -->
+					<!-- <a>增加附件</a>&nbsp;&nbsp;&nbsp;&nbsp;<a>移去附件</a>（项目申报书。项目汇总表等） -->
+					<!-- <a>增加附件</a>&nbsp;&nbsp;&nbsp;&nbsp;<a>移去附件</a> -->
 				</div>
 			</div>
 
@@ -86,6 +90,40 @@
 			</div>
 		</form>
 	</div>
-</div>	
+</div>
+<script>
+    //增加
+    var i = 0;
+    var addBtn = document.getElementsByClassName("addfile")[0];
+    addBtn.onclick = function () {
+        var div = document.createElement("div");
+        var input = document.createElement("input");
+        var button = document.createElement("a");
+        var textNode = document.createTextNode("移除附件");
+        input.setAttribute("type","file");
+        input.setAttribute("name","file");
+        input.setAttribute("class","form-control");
+        button.setAttribute("class","remove");
+        /* div.setAttribute("id",i); */
+        button.appendChild(textNode);
+        div.appendChild(input);
+        div.appendChild(button);
+        document.getElementById("d2").appendChild(div);
+
+        //移除
+        var remove = document.getElementsByClassName("remove");
+        for(var k = 0;k<remove.length;k++){
+            remove[k].index = k;
+            remove[k].onclick = function () {
+                var removeDiv = this.parentNode.parentNode;
+                console.log(removeDiv);
+                removeDiv.removeChild(this.parentNode);
+            }
+        }
+
+        i++;
+    };
+
+</script>	
 </body>
 </html>

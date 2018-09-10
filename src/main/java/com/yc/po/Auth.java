@@ -18,7 +18,7 @@ public class Auth implements Serializable {
 	public Integer getAid() {
 		return aid;
 	}
-
+	
 	public void setAid(Integer aid) {
 		this.aid = aid;
 	}

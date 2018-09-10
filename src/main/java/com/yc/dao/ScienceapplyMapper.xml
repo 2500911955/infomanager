@@ -14,6 +14,7 @@
     <result column="sadepart_idea" property="sadepartIdea" jdbcType="VARCHAR" />
     <result column="sascience_idea" property="sascienceIdea" jdbcType="VARCHAR" />
     <result column="sastate" property="sastate" jdbcType="VARCHAR" />
+    <result column="states" property="states" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     said, saname, saclass, uid, sagroup, saexpenditure, sacontent, saremark, saaccessory, 
@@ -41,11 +42,11 @@
       #{sadepartIdea,jdbcType=VARCHAR}, #{sascienceIdea,jdbcType=VARCHAR}, #{sastate,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yc.po.Scienceapply" >
+  <insert id="insertSelective" parameterType="com.yc.po.Scienceapply" useGeneratedKeys="true" keyProperty="said">
     insert into scienceapply
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="said != null" >
-        said,
+      <if test="pid != null" >
+        pid,
       </if>
       <if test="saname != null" >
         saname,
@@ -77,13 +78,16 @@
       <if test="sascienceIdea != null" >
         sascience_idea,
       </if>
-      <if test="sastate != null" >
+      <if test="sastate == null" >
         sastate,
+      </if>
+      <if test="states == null" >
+        states,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="said != null" >
-        #{said,jdbcType=INTEGER},
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
       </if>
       <if test="saname != null" >
         #{saname,jdbcType=VARCHAR},
@@ -115,8 +119,11 @@
       <if test="sascienceIdea != null" >
         #{sascienceIdea,jdbcType=VARCHAR},
       </if>
-      <if test="sastate != null" >
-        #{sastate,jdbcType=VARCHAR},
+      <if test="sastate == null" >
+        1,
+      </if>
+      <if test="states == null" >
+        1,
       </if>
     </trim>
   </insert>
@@ -155,6 +162,9 @@
       </if>
       <if test="sastate != null" >
         sastate = #{sastate,jdbcType=VARCHAR},
+      </if>
+      <if test="states != null" >
+        states = #{states,jdbcType=VARCHAR},
       </if>
     </set>
     where said = #{said,jdbcType=INTEGER}

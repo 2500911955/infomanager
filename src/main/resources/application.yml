@@ -4,8 +4,8 @@ server:
 #mybatis_config  
 mybatis:  
     #mapper-locations: classpath:com/yc/house/dao/*.xml
-    config-location: classpath:mybatis-config.xml
-spring:  
+    config-location: classpath:mybatis-config.xml   
+spring: 
     #thymeleaf start
     thymeleaf:
       mode: HTML5
